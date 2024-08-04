@@ -28,7 +28,7 @@ def get_db():
 
 # while True:
 #     try:
-#         conn = psycopg.connect(dbname='fastapi_sm', user='postgres', password='password
+#         conn = psycopg.connect(dbname='', user='', password=''
 #         ')
 #         cursor = conn.cursor()
 #         print("Database connection was successful")
