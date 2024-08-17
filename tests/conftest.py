@@ -3,16 +3,16 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from app.config import Settings
+from app.config import settings
 from app.database import get_db, Base
 from app.main import app
 from app.oauth2 import create_access_token
 from app import models
 
 
-SQLALCHEMY_DATABASE_URL = (f'postgresql://{Settings.DATABASE_USERNAME}:'
-                           f'{Settings.DATABASE_PASSWORD}@{Settings.DATABASE_HOSTNAME}:'
-                           f'{Settings.DATABASE_PORT}/{Settings.DATABASE_NAME}_test')
+SQLALCHEMY_DATABASE_URL = (f'postgresql://{settings.DATABASE_USERNAME}:'
+                           f'{settings.DATABASE_PASSWORD}@{settings.DATABASE_HOSTNAME}:'
+                           f'{settings.DATABASE_PORT}/{settings.DATABASE_NAME}_test')
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_pre_ping=True)
 
