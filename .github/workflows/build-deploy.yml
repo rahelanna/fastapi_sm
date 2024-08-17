@@ -51,7 +51,6 @@ jobs:
           pytest
 
       - name: Set up Docker Buildx
-        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
         uses: docker/setup-buildx-action@v3
 
       - name: Login to Docker Hub
