@@ -4,6 +4,9 @@ on: [push, pull_request]
 
 jobs:
   build:
+    permissions:
+      deployments: write
+      statuses: write
     environment:
       name: testing
     env:
@@ -102,9 +105,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: nexterias/actions-vercel@v1
         with:
-          token: ${{ secrets.YOUR_VERCEL_TOKEN }}
-          org-id: ${{ secrets.YOUR_VERCEL_ORG_ID }}
-          project-id: ${{ secrets.YOUR_VERCEL_PROJECT_ID }}
+          token: ${{ secrets.VERCEL_TOKEN }}
+          org-id: ${{ secrets.VERCEL_ORG_ID }}
+          project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           production: ${{ github.ref == 'refs/heads/main' }}
           prebuilt: true
 
