@@ -15,6 +15,9 @@ jobs:
       SECRET_KEY: ${{secrets.SECRET_KEY}}
       ALGORITHM: ${{secrets.ALGORITHM}}
       ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
+      YOUR_VERCEL_TOKEN: ${{secrets.YOUR_VERCEL_TOKEN}}
+      YOUR_VERCEL_ORG_ID: ${{secrets.YOUR_VERCEL_ORG_ID}}
+      YOUR_VERCEL_PROJECT_ID: ${{secrets.YOUR_VERCEL_PROJECT_ID}}
 
     services:
       postgres:
