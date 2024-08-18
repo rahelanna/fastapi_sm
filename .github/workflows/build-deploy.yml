@@ -73,18 +73,39 @@ jobs:
 #          annotations: ${{ steps.meta.outputs.annotations }}
 #          push: true
 
+#  deploy:
+#    runs-on: ubuntu-latest
+#    needs: [build]
+#    environment:
+#      name: production
+#    steps:
+#      - name: pulling git repo
+#        uses: actions/checkout@v4
+#      - name: deploying to Render
+#        uses: sws2apps/render-deployment@main
+#        with:
+#          serviceId: ${{ secrets.RENDER_SERVICE_ID }}
+#          apiKey: ${{ secrets.RENDER_API_KEY }}
+#          multipleDeployment: false
+
+
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
-    needs: [build]
-    environment:
-      name: production
+    permissions:
+      contents: read
+      deployments: write
+      statuses: write
+      pull-requests: write
+
     steps:
-      - name: pulling git repo
-        uses: actions/checkout@v4
-      - name: deploying to Render
-        uses: sws2apps/render-deployment@main
+      - uses: actions/checkout@v3
+
+      - uses: nexterias/actions-vercel@v1
         with:
-          serviceId: ${{ secrets.RENDER_SERVICE_ID }}
-          apiKey: ${{ secrets.RENDER_API_KEY }}
-          multipleDeployment: false
+          token: ${{ secrets.YOUR_VERCEL_TOKEN }}
+          org-id: ${{ secrets.YOUR_VERCEL_ORG_ID }}
+          project-id: ${{ secrets.YOUR_VERCEL_PROJECT_ID }}
+          production: ${{ github.ref == 'refs/heads/main' }}
+          prebuilt: true
 
