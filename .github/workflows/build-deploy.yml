@@ -90,13 +90,10 @@ jobs:
 
 
   deploy:
-    name: Deploy
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      deployments: write
-      statuses: write
-      pull-requests: write
+    needs: [build]
+    environment:
+      name: production
 
     steps:
       - uses: actions/checkout@v3
