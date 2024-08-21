@@ -4,9 +4,6 @@ on: [push, pull_request]
 
 jobs:
   build:
-    permissions:
-      deployments: write
-      statuses: write
     environment:
       name: test
     env:
