@@ -4,8 +4,11 @@ on: [push, pull_request]
 
 jobs:
   build:
+    permissions:
+      deployments: write
+      statuses: write
     environment:
-      name: test
+      name: testing
     env:
       DATABASE_HOSTNAME: ${{secrets.DATABASE_HOSTNAME}}
       DATABASE_PORT: ${{secrets.DATABASE_PORT}}
