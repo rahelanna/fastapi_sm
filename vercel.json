@@ -11,5 +11,6 @@
       "src": "/(.*)",
       "dest": "api/index.py"
     }
-  ]
+  ],
+  "buildCommand": "echo 'Build step not needed for Python' || exit 0"
 }
